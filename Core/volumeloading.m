@@ -1,5 +1,18 @@
 function loading = volumeloading(pars,data,eta_Vtot_vec)
 
+%{
+    This function executes the volume loading experiment for the healthy
+    and dysfunction cases. This function incorporates running the model in
+    parallel. 
+    Inputs: 
+    pars            - parameter vector 
+    data            - input data structure with data and global parameters 
+    eta_Vtot_vec    - vector of scalar to progressively increase total
+                      blood volume 
+    Outputs: 
+    loading         - output structure for volume loading experiments 
+%}
+
 %% Run volume loading experiment 
 
 % Set time vector for up to 2 seconds 

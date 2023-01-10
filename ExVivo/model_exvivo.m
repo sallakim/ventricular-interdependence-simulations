@@ -1,5 +1,16 @@
 function [dxdt, outputs] = model_exvivo(t,x,pars,data) 
 
+%{ 
+    This function contains the right-hand side of the ex vivo model. 
+    Inputs: 
+    x       - states 
+    pars    - vector of adjustable parameter values 
+    data    - input data structure with data and global parameters 
+    Outputs: 
+    dxdt    - vector of solved ODEs
+    outputs - vector of solved auxiliary equations 
+%}
+
 HR = data.HR; 
 fixpars = data.fixpars;
 

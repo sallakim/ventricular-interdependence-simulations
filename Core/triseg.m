@@ -1,5 +1,17 @@
 function f = triseg(x,pars,data,init)
 
+%{ 
+    This function contains the equations to calculate consistent initial
+    conditions for the DAE. 
+    Inputs: 
+    x           - vector of states 
+    pars        - vector of adjustable parameters 
+    data        - input data structure with data and global parameters 
+    init        - vector of initial conditions 
+    Outputs: 
+    f           - vector of equations for the root finder 
+%} 
+
 x = exp(x); 
 
 HR = data.HR; 

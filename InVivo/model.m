@@ -1,5 +1,17 @@
 function [dxdt, outputs] = model(t,x,pars,data) 
 
+%{ 
+    This function contains the right-hand side of the in vivo model. 
+    Inputs: 
+    t       - time 
+    x       - states 
+    pars    - vector of adjustable parameter values 
+    data    - input data structure with data and global parameters 
+    Outputs: 
+    dxdt    - vector of solved ODEs
+    outputs - vector of solved auxiliary equations 
+%}
+
 fixpars = data.fixpars;
 
 if isfield(data,'eta_EDV') == 1

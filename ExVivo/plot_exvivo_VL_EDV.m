@@ -1,5 +1,12 @@
 function [] = plot_exvivo_VL_EDV(outputs,data)
 
+%{ 
+    This function makes the plots for the ex vivo model. 
+    Inputs: 
+    outputs     - output structure from model_sol_exvivo.m 
+    data        - input data structure with data and global parameters 
+%} 
+
 % Unpack outputs structure 
 
     eta_EDV_vec  = outputs.eta_EDV_vec;

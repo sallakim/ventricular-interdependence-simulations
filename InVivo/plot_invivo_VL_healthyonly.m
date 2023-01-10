@@ -1,5 +1,15 @@
 function [] = plot_invivo_VL_healthyonly(loading)
 
+%{ 
+    Plot the volume loading experiment for the in vivo version of the model
+    for the healthy case only.
+    Inputs: 
+    loading         - input structure from volumeloading.m containing 
+                      vectors for clinical metrics 
+    data            - input data structure with data and global parameters 
+    Outputs: (figures) 
+%} 
+
 %% Flags
 
 printoutfigs_on = loading.data.printoutfigs_on; 

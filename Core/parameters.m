@@ -1,5 +1,17 @@
 function [adjpars,UB,LB,data] = parameters(data)
 
+ %{ 
+    Assignment and/or nominal calculation of all model parameters. 
+    
+    Inputs: 
+    data        - input data structure with data and global parameters 
+    Outputs: 
+    adjpars     - vector of adjustable parameters 
+    UB          - vector of parameter upper bounds 
+    LB          - vector of parameter lower bounds 
+    data        - output data structure with new field assignments 
+ %} 
+
 %% Load in values from data structure 
 % Blood pressures 
 SPbar = data.SPbar; 

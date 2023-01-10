@@ -1,5 +1,13 @@
 function [data] = makedatastructure
 
+%{
+    This function compiles all of the data into a structure.
+    Inputs: 
+    data    - input data structure with data and global parameters 
+    Outputs: 
+    data    - reassigned data structure with data from this script included
+%} 
+
 % Heart rate (H) and heart period (T)
 HR = 60;  
 T  = 60/HR;  

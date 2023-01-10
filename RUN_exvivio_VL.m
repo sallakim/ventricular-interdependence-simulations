@@ -1,7 +1,7 @@
 clear all
 close all
 
-addpath ExVivo_3
+addpath ExVivo
 addpath Core
 
 printon = 1; 
@@ -26,7 +26,7 @@ data.a_eta_Vtot = a_eta_Vtot;
 
 %% Solve model 
 
-[outputs,rout,J] = model_sol_4gammaopt(adjpars,data); 
+[outputs,rout,J] = model_sol_gammaopt(adjpars,data); 
 
 %% Plot figures 
 

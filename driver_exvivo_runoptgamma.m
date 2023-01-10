@@ -54,7 +54,7 @@ pars_opt(INDMAP) = xopt;
 % run model with optimized parameters 
 data.gamma_opt = exp(xopt); 
 [adjpars,~,~,data] = parameters(data); 
-[outputs,rout,J] = model_sol_4gammaopt(adjpars,data);
+[outputs,rout,J] = model_sol_gammaopt(adjpars,data);
 
 optpars = exp(pars_opt);
 disp('optimized gamma')

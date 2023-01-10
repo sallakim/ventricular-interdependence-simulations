@@ -1,5 +1,17 @@
 function [outputs,rout,J] = model_sol(adjpars,data)
 
+%{ 
+    This function solves the time-varying in vivo version of the model to
+    steady-state and then calculates 2 steady-state beats. 
+    Inputs: 
+    adjpars         - vector of adjustable parameters 
+    data            - input data structure with data and global parameters
+    Outputs: 
+    outputs         - structure with all pertinent model outputs to plot 
+    rout            - residual vector 
+    J               - cost functional 
+%} 
+
 %% Initialization  
 
 plot_switch = 0; % 0 = off, 1 = on 

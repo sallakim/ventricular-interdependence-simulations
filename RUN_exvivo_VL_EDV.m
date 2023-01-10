@@ -1,7 +1,7 @@
 clear all
 close all
 
-addpath ExVivo_3
+addpath ExVivo
 addpath Core
 
 printon = 1; 
@@ -35,7 +35,7 @@ for i = 1:length(eta_EDV_vec)
     [adjpars,~,~,data] = parameters(data); 
     
     % Solve model
-    [outputs,~,~] = model_sol_4gammaopt(adjpars,data); 
+    [outputs,~,~] = model_sol_gammaopt(adjpars,data); 
 
     % Undo EDV scaling
     data.EDV_LV = 1/eta_EDV_vec(i) * data.EDV_LV; 

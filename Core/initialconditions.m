@@ -1,5 +1,14 @@
 function init = initialconditions(pars,data,eta_Vtot) 
 
+%{ 
+    This function approximates steady-state initial conditions. 
+    Inputs: 
+    pars        - vector of parameters 
+    data        - input data structure with data and global parameters 
+    Outputs: 
+    init        - vector of initial conditions 
+%} 
+
 
 %% Fixed parameters 
 

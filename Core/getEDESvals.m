@@ -1,10 +1,19 @@
-function [EDV, EDP, ESV, ESP] = getEDESvals(V_LV,V_RV,P_LV,P_RV) % only load in structure instead of these specific volumes a
-% and unpack structure from model sol 
+function [EDV, EDP, ESV, ESP] = getEDESvals(V_LV,V_RV,P_LV,P_RV) 
 
-% Only look for volumes before tricuspid opens / mitral for edv/p
-% In model sol - find where the valves open and close and save those times
-% to use here. 
-%  
+%{ 
+    This function calculates the end-diastolic (ED) and end-systolic (ES)
+    volumes and pressures from the model. 
+    
+    Inputs: 
+    V_LV, V_RV, P_LV, P_RV   - pressure and volumes from model_sol.m 
+    output structure 
+    
+    Ouputs: 
+    EDV     - vector of end-diastolic volumes for LV and RV 
+    EDP     - vector of end-diastolic pressures for LV and RV 
+    ESV     - vector of end-systolic volumes for LV and RV 
+    ESP     - vector of end-systolic pressures for LV and RV 
+    %}
 
 % Calculated model predicted EDP, ESP, EDV, ESV 
 
