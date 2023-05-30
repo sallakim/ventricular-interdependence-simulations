@@ -50,9 +50,9 @@ xlim([100 200])
 
 %% Print Figures
 
-% print(hfig1,'-dpng',strcat('Figures/','/ExVivo','/F2_a.png'))
-% print(hfig2,'-dpng',strcat('Figures/','/ExVivo','/F2_b.png'))
-% 
-% print(hfig1,'-depsc2',strcat('Figures/','/ExVivo','/F2_a.eps'))
-% print(hfig2,'-depsc2',strcat('Figures/','/ExVivo','/F2_b.eps'))
+print(hfig1,'-dpng',strcat('Figures/','/ExVivo','/F2_a.png'))
+print(hfig2,'-dpng',strcat('Figures/','/ExVivo','/F2_b.png'))
+
+print(hfig1,'-depsc2',strcat('Figures/','/ExVivo','/F2_a.eps'))
+print(hfig2,'-depsc2',strcat('Figures/','/ExVivo','/F2_b.eps'))
 
