@@ -15,12 +15,13 @@ function loading = volumeloading(pars,data,eta_Vtot_vec)
 
 %% Run volume loading experiment 
 
-% Set time vector for up to 2 seconds 
-time = 0:data.dt:2; 
+% Set time vector for up to 2 beats 
 
 HR = data.HR;
 
 T = 60/HR; 
+
+time = 0:data.dt:2*T; 
 
 % Initialize vectors 
 EDV_LV_vec = zeros(size(eta_Vtot_vec)); EDV_RV_vec = zeros(size(eta_Vtot_vec)); 
