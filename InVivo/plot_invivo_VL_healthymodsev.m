@@ -77,15 +77,15 @@ Q_a_valve_mat_h = loading_h.Q_a_valve_mat;
 Q_a_valve = Q_a_valve_mat_h(:,base_loc_h);
 
 % Find ejection
-i_AVO = find(diff(Q_a_valve) > 0,1,'first'); 
-i_AVC = find(diff(Q_a_valve) < 0,1,'last'); 
+i_AVO = find(diff(Q_a_valve) > 0,1,'first'); % Start of sytole 
+i_AVC = find(diff(Q_a_valve) < 0,1,'last');  % End of systole 
 
 T_AVO = time_h(i_AVO); 
 T_AVC = time_h(i_AVC) - T; 
 
 % Find filling
-i_MVO = find(diff(Q_m_valve) > 0,1,'first'); 
-i_MVC = find(diff(Q_m_valve) < 0,1,'last'); 
+i_MVO = find(diff(Q_m_valve) > 0,1,'first'); % Start of sytole 
+i_MVC = find(diff(Q_m_valve) < 0,1,'last');   % End of diastole 
 
 T_MVO = time_h(i_MVO); 
 T_MVC = time_h(i_MVC) - T; 
@@ -358,6 +358,7 @@ xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 % title(strcat(run_experiment,'- Frank-Starling - LV')) 
 set(gca,'FontSize',20)
+xlim([0 50])
 
 
 % RV
@@ -379,7 +380,7 @@ xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 % title(strcat(run_experiment,'- Frank-Starling - RV')) 
 set(gca,'FontSize',20)
-
+xlim([0 20])
 
 %% Cardiac power 
 hfig10 = figure(10); 
@@ -407,6 +408,8 @@ legend([h1,h2],'LV','RV')
 xlim([0 4])
 ylim([0 1.2])
 set(gca,'FontSize',20)
+
+hfig10.Renderer = 'painters';
 
 %% Septal Curvature 
 hfig9 = figure(9);
@@ -438,6 +441,8 @@ legend([h1 h3],'H','S')
     
 
 set(gca,'FontSize',20)
+
+hfig9.Renderer = 'painters';
 
 
 %% Print figures

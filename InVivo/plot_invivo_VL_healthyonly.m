@@ -287,6 +287,7 @@ legend([h_norm_h],'Baseline','Location','northwest')
 xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 set(gca,'FontSize',20)
+xlim([0 50])
 
 % RV
 hfig13 = figure(13);
@@ -298,6 +299,7 @@ legend([h_norm_h],'Baseline','Location','northwest')
 xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 set(gca,'FontSize',20)
+xlim([0 20])
 
 %% Septal Curvature 
 
