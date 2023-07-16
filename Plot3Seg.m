@@ -13,18 +13,18 @@ titles = {'Healthy normal', ...
           'Left ventricular Systolic dysfunction', ...
           'Left ventricular Diastolic dysfunction', ...
           'Right ventricular Systolic dysfunction',...
-          'Right ventricular diastolic dysfunction'};
+          'Right ventricular Diastolic dysfunction'};
 
 for caseIter = 1:length(files)
-    xy = load(['../' files{caseIter}]).xy;
+    xy = load([files{caseIter}]).xy;
     
     set(gcf, 'Position', defpos);
     % xy = [t, xm_lv, xm_sep,  xm_rv, ym, t_lv, t_sep,  t_rv]; % data structure
     % format
-    slides = round(linspace(1, 800, 8)/10)*10;
-    slides(1) =1;
-    slides = slides(1:end-1);
-    t = xy(slides + 1, 1)';
+    % slides = round(linspace(1, 800, 8)/10)*10;
+    slides = [97, 374, 556, 1000];
+    slides_titles = {"Start systole", "End systole", "Start diastole", "End diastole"};
+    t = xy(slides, 1)';
     xm_lv = xy(slides , 2)';
     xm_sep = xy(slides , 3)';
     xm_rv = xy(slides , 4)';
@@ -104,15 +104,15 @@ for caseIter = 1:length(files)
             set(gca, "YTicklabel", []);
         end
         if length(files) == caseIter
-            xlabel({"cm", sprintf(" %3.0f ms", t(i)*1000)});
+            xlabel({"cm", slides_titles{i}});
             set(gca, "XTick", [-5, 0, 5]);
         else
 % no ticks for insides
             set(gca, "XTick", []);
             set(gca, "XTicklabel", []);
         end
-        if i == round(length(slides)/2)
-            title(titles{caseIter});
+        if i == 1% round(length(slides)/2)
+            title(titles{caseIter}, "HorizontalAlignment","left");
         end
         c = co(i, :);
         % Outer LV
