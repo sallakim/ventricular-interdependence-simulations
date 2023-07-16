@@ -67,6 +67,9 @@ Cm_SEP_mat = zeros(length(time),length(eta_Vtot_vec));
 Cm_LV_mat = zeros(length(time),length(eta_Vtot_vec)); 
 Cm_RV_mat = zeros(length(time),length(eta_Vtot_vec)); 
 
+Vm_LV_mat = zeros(length(time),length(eta_Vtot_vec)); 
+Vm_RV_mat = zeros(length(time),length(eta_Vtot_vec)); 
+
 
 for i = 1:length(eta_Vtot_vec) 
 
@@ -171,6 +174,13 @@ for i = 1:length(eta_Vtot_vec)
     Cm_LV_mat(:,i) = Cm_LV;
     Cm_RV_mat(:,i) = Cm_RV;
 
+
+    Vm_LV = outputs_loading.wallvolumes.Vm_LV; 
+    Vm_RV = outputs_loading.wallvolumes.Vm_RV; 
+
+    Vm_LV_mat(:,i) = Vm_LV; 
+    Vm_RV_mat(:,i) = Vm_RV; 
+
 end
 
 y_v = outputs_loading.activation.y_v;
@@ -232,6 +242,9 @@ loading.CP_RV_vec = CP_RV_vec;
 loading.Cm_SEP_mat = Cm_SEP_mat;
 loading.Cm_LV_mat  = Cm_LV_mat;
 loading.Cm_RV_mat  = Cm_RV_mat;
+
+loading.Vm_LV_mat = Vm_LV_mat; 
+loading.Vm_RV_mat = Vm_RV_mat; 
 
 loading.time = time;
 
