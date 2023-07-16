@@ -23,8 +23,8 @@ n_cores = 4;
 %  run_experiment = 'LVDD'; 
 %    run_experiment = 'RVSD'; 
   %  run_experiment = 'RVDD'; 
-% run_experiments = {'Healthy', 'LVSD', 'LVDD', 'RVSD', 'RVDD'}; 
-run_experiments = {'Healthy'}; 
+run_experiments = {'Healthy', 'LVSD', 'LVDD', 'RVSD', 'RVDD'}; 
+% run_experiments = {'Healthy'}; 
 
 
 delete(gcp('nocreate'))
