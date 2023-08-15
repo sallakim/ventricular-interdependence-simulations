@@ -515,8 +515,8 @@ if printoutfigs_on == 1
 %     print(hfig12,'-dpng',strcat('Figures/',run_experiment,'/F_LV_progression.png'))
 %     print(hfig13,'-dpng',strcat('Figures/',run_experiment,'/F_RV_progression.png'))
 %     print(hfig14,'-dpng',strcat('Figures/',run_experiment,'/F_SEP_curvature.png'))
-    print(hfig15,'-dpng',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.png'))
-    print(hfig16,'-dpng',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.png'))
+%     print(hfig15,'-dpng',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.png'))
+%     print(hfig16,'-dpng',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.png'))
     print(hfig17,'-dpng',strcat('Figures/',run_experiment,'/Figure_3.png'))
 
 %     print(hfig1,'-depsc2',strcat('Figures/',run_experiment,'/F3a_PVloops.eps'))
@@ -533,7 +533,7 @@ if printoutfigs_on == 1
 %     print(hfig12,'-depsc2',strcat('Figures/',run_experiment,'/F_LV_progression.eps'))
 %     print(hfig13,'-depsc2',strcat('Figures/',run_experiment,'/F_RV_progression.eps'))
 %     print(hfig14,'-depsc2',strcat('Figures/',run_experiment,'/F_SEP_curvature.eps'))
-    print(hfig15,'-depsc2',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.eps'))
-    print(hfig16,'-depsc2',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.eps'))
+%     print(hfig15,'-depsc2',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.eps'))
+%     print(hfig16,'-depsc2',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.eps'))
     print(hfig17,'-depsc2',strcat('Figures/',run_experiment,'/Figure_3.eps'))
 end
