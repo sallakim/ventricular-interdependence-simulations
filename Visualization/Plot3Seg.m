@@ -88,14 +88,14 @@ for caseIter = 1:length(files)
     a_start_rv = 0*pi/2 -a_rv;
     a_stop_rv = 0*pi/2 + a_rv;
     
-    plotArc = @(x0, radius,arc)  [radius.*cos(arc) + x0;  radius.*sin(arc)]; 
+    plotArc = @(x0, radius,arc)  [-radius.*cos(arc) - x0;  radius.*sin(arc)]; 
     co = colororder;
     for i = 1:length(slides)
         subplot(length(files), length(slides), i + length(slides)*(caseIter-1));hold on;
         set(gca, "FontSize", 14);
         
         % depends on the total width too!
-        axis([-5.9 7 -5 5])
+        axis([-7.5 5.9 -5 5])
         % axis tight
         axis equal;
         set(gca, "YTick", [-5, 0, 5]);
