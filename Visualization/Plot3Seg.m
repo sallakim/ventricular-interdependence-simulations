@@ -1,6 +1,6 @@
 % visualize the time course
 clear;
-figure(101);clf; hold on;
+figure(102);clf; hold on;
 
 defpos = [200          69        1199         922];
 
@@ -16,7 +16,7 @@ titles = {'Healthy normal', ...
           'Right ventricular Diastolic dysfunction'};
 
 for caseIter = 1:length(files)
-    xy = load([files{caseIter}]).xy;
+    xy = load(['..\' files{caseIter}]).xy;
     
     set(gcf, 'Position', defpos);
     % xy = [t, xm_lv, xm_sep,  xm_rv, ym, t_lv, t_sep,  t_rv]; % data structure
@@ -93,11 +93,14 @@ for caseIter = 1:length(files)
     for i = 1:length(slides)
         subplot(length(files), length(slides), i + length(slides)*(caseIter-1));hold on;
         set(gca, "FontSize", 14);
+axis([-5 5 -5.5 5.5])
+axis equal;
 
         if i == 1
             % only first have ticks and label
             ylabel("cm");
-            
+            set(gca, "YTick", [-4, 0, 4]);
+            set(gca, "YTicklabel", [-4, 0, 4]);
         else
             % no ticks for insides
             set(gca, "YTick", []);
@@ -105,7 +108,8 @@ for caseIter = 1:length(files)
         end
         if length(files) == caseIter
             xlabel({"cm", slides_titles{i}});
-            set(gca, "XTick", [-5, 0, 5]);
+            set(gca, "XTick", [-4, 0, 4], 'XMinorTick', 'off');
+            set(gca, "XTicklabel", [-4, 0, 4], 'TickLength', [0.0250 0.0250]);
         else
 % no ticks for insides
             set(gca, "XTick", []);
@@ -155,5 +159,7 @@ for caseIter = 1:length(files)
         xy_rv = plotArc(x0_rv(i), R_rv(i) + h_rv(i), arc_rv);
         plot(xy_rv(1, :), xy_rv(2, :), 'LineWidth',2, 'Color', c)
     
+        % xlim([-5 5]);ylim([-5 5]);axis equal;
+        % axis equal;
     end
 end 
