@@ -78,11 +78,18 @@ Cm_SEP_vec = Cm_SEP_mat(:,base_loc);
 y_v = loading.y_v; 
 
 % Find ejection
-i_AVO = find(diff(Q_a_valve) > 0,1,'first'); 
-i_AVC = find(diff(Q_a_valve) < 0,1,'last');
+i_AVO = find(diff(Q_a_valve) > 0,1,'first'); % Start of sytole 
+i_AVC = find(diff(Q_a_valve) < 0,1,'last');  % End of systole 
 
 T_AVO = time(i_AVO); 
 T_AVC = time(i_AVC) - T; 
+
+% Find filling
+i_MVO = find(diff(Q_m_valve) > 0,1,'first'); % Start of sytole 
+i_MVC = find(diff(Q_m_valve) < 0,1,'last');   % End of diastole 
+
+T_MVO = time(i_MVO); 
+T_MVC = time(i_MVC) - T; 
 
 %% Make EDPVR Klotz curves
 
@@ -287,6 +294,7 @@ legend([h_norm_h],'Baseline','Location','northwest')
 xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 set(gca,'FontSize',20)
+xlim([0 50])
 
 % RV
 hfig13 = figure(13);
@@ -298,6 +306,7 @@ legend([h_norm_h],'Baseline','Location','northwest')
 xlabel('EDP (mmHg)')
 ylabel('SV (mL)')
 set(gca,'FontSize',20)
+xlim([0 20])
 
 %% Septal Curvature 
 
@@ -305,11 +314,20 @@ hfig14 = figure(14);
 clf
 hold on 
 plot(time,Cm_SEP_vec,'color', green,'linewidth',2)
+
 x = [T_AVO T_AVC T_AVC T_AVO];
 y1 = [0 0 .5 .5];
 patch(x,y1,gray,'linestyle','none')
-alpha(.05)
-text(T_AVO+.02,.04,'Ejection','fontsize',20)
+ alpha(.1)
+text(T_AVO+.02,.2,'Ejection','fontsize',20)
+
+x = [T_MVO T_MVC T_MVC T_MVO];
+y1 = [0 0 .5 .5];
+patch(x,y1,gray,'linestyle','none')
+alpha(.1)
+text(T_MVO+.02,.2,'Filling','fontsize',20)
+
+
 xlabel('Time (s)')
 ylabel('Curvature (cm^{-1})')
 title(strcat('Septal Curvature'))
@@ -397,7 +415,7 @@ xlabel('Time (s)')
 ylabel('Pressure (mmHg)')
 set(gca,'FontSize',8)
 
-%% FIGURE 4 SUBPLOT 
+%% Healthy Case Volume Loading 
 
 hfig18 = figure(18); 
 clf
@@ -483,44 +501,39 @@ if printoutfigs_on == 1
     if ~exist(strcat('Figures/',run_experiment), 'dir')
         mkdir(strcat('Figures/',run_experiment))
     end
-    print(hfig1,'-dpng',strcat('Figures/',run_experiment,'/F3a_PVloops.png'))
-    print(hfig2,'-dpng',strcat('Figures/',run_experiment,'/F3b_Volumes.png'))
-    print(hfig3,'-dpng',strcat('Figures/',run_experiment,'/F3c_HighPressures.png'))
-    print(hfig4,'-dpng',strcat('Figures/',run_experiment,'/F3d_LowPressures.png'))
-    print(hfig5,'-dpng',strcat('Figures/',run_experiment,'/F_supp_Flows.png'))
-    print(hfig6,'-dpng',strcat('Figures/',run_experiment,'/F_supp_Activation.png'))
-    print(hfig7,'-dpng',strcat('Figures/',run_experiment,'/F_supp_TBV.png'))
-    print(hfig8,'-dpng',strcat('Figures/',run_experiment,'/F4a_LV_progression.png'))
-    print(hfig9,'-dpng',strcat('Figures/',run_experiment,'/F4b_RV_progression.png'))
-    print(hfig10,'-dpng',strcat('Figures/',run_experiment,'/F4c_EDPVR.png'))
-    print(hfig11,'-dpng',strcat('Figures/',run_experiment,'/F4d_ESPVR.png'))
-    print(hfig12,'-dpng',strcat('Figures/',run_experiment,'/F4e_LV_progression.png'))
-    print(hfig13,'-dpng',strcat('Figures/',run_experiment,'/F4f_RV_progression.png'))
-    print(hfig14,'-dpng',strcat('Figures/',run_experiment,'/F4e_SEP_curvature.png'))
-    print(hfig15,'-dpng',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.png'))
-    print(hfig16,'-dpng',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.png'))
+%     print(hfig1,'-dpng',strcat('Figures/',run_experiment,'/F3a_PVloops.png'))
+%     print(hfig2,'-dpng',strcat('Figures/',run_experiment,'/F3b_Volumes.png'))
+%     print(hfig3,'-dpng',strcat('Figures/',run_experiment,'/F3c_HighPressures.png'))
+%     print(hfig4,'-dpng',strcat('Figures/',run_experiment,'/F3d_LowPressures.png'))
+%     print(hfig5,'-dpng',strcat('Figures/',run_experiment,'/F_supp_Flows.png'))
+%     print(hfig6,'-dpng',strcat('Figures/',run_experiment,'/F_supp_Activation.png'))
+%     print(hfig7,'-dpng',strcat('Figures/',run_experiment,'/F_supp_TBV.png'))
+%     print(hfig8,'-dpng',strcat('Figures/',run_experiment,'/F_LV_progression.png'))
+%     print(hfig9,'-dpng',strcat('Figures/',run_experiment,'/F_RV_progression.png'))
+%     print(hfig10,'-dpng',strcat('Figures/',run_experiment,'/F_EDPVR.png'))
+%     print(hfig11,'-dpng',strcat('Figures/',run_experiment,'/F_ESPVR.png'))
+%     print(hfig12,'-dpng',strcat('Figures/',run_experiment,'/F_LV_progression.png'))
+%     print(hfig13,'-dpng',strcat('Figures/',run_experiment,'/F_RV_progression.png'))
+%     print(hfig14,'-dpng',strcat('Figures/',run_experiment,'/F_SEP_curvature.png'))
+%     print(hfig15,'-dpng',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.png'))
+%     print(hfig16,'-dpng',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.png'))
     print(hfig17,'-dpng',strcat('Figures/',run_experiment,'/Figure_3.png'))
-    print(hfig18,'-dpng',strcat('Figures/',run_experiment,'/Figure_4.png'))
 
-
-    print(hfig1,'-depsc2',strcat('Figures/',run_experiment,'/F3a_PVloops.eps'))
-    print(hfig2,'-depsc2',strcat('Figures/',run_experiment,'/F3b_Volumes.eps'))
-    print(hfig3,'-depsc2',strcat('Figures/',run_experiment,'/F3c_HighPressures.eps'))
-    print(hfig4,'-depsc2',strcat('Figures/',run_experiment,'/F3d_LowPressures.eps'))
-    print(hfig5,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_Flows.eps'))
-    print(hfig6,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_Activation.eps'))
-    print(hfig7,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_TBV.eps'))
-    print(hfig8,'-depsc2',strcat('Figures/',run_experiment,'/F4a_LV_progression.eps'))
-    print(hfig9,'-depsc2',strcat('Figures/',run_experiment,'/F4b_RV_progression.eps'))
-    print(hfig10,'-depsc2',strcat('Figures/',run_experiment,'/F4c_EDPVR.eps'))
-    print(hfig11,'-depsc2',strcat('Figures/',run_experiment,'/F4d_ESPVR.eps'))
-    print(hfig12,'-depsc2',strcat('Figures/',run_experiment,'/F4e_LV_progression.eps'))
-    print(hfig13,'-depsc2',strcat('Figures/',run_experiment,'/F4f_RV_progression.eps'))
-    print(hfig14,'-depsc2',strcat('Figures/',run_experiment,'/F4e_SEP_curvature.eps'))
-    print(hfig15,'-depsc2',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.eps'))
-    print(hfig16,'-depsc2',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.eps'))
+%     print(hfig1,'-depsc2',strcat('Figures/',run_experiment,'/F3a_PVloops.eps'))
+%     print(hfig2,'-depsc2',strcat('Figures/',run_experiment,'/F3b_Volumes.eps'))
+%     print(hfig3,'-depsc2',strcat('Figures/',run_experiment,'/F3c_HighPressures.eps'))
+%     print(hfig4,'-depsc2',strcat('Figures/',run_experiment,'/F3d_LowPressures.eps'))
+%     print(hfig5,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_Flows.eps'))
+%     print(hfig6,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_Activation.eps'))
+%     print(hfig7,'-depsc2',strcat('Figures/',run_experiment,'/F_supp_TBV.eps'))
+%     print(hfig8,'-depsc2',strcat('Figures/',run_experiment,'/F_LV_progression.eps'))
+%     print(hfig9,'-depsc2',strcat('Figures/',run_experiment,'/F_RV_progression.eps'))
+%     print(hfig10,'-depsc2',strcat('Figures/',run_experiment,'/F_EDPVR.eps'))
+%     print(hfig11,'-depsc2',strcat('Figures/',run_experiment,'/F_ESPVR.eps'))
+%     print(hfig12,'-depsc2',strcat('Figures/',run_experiment,'/F_LV_progression.eps'))
+%     print(hfig13,'-depsc2',strcat('Figures/',run_experiment,'/F_RV_progression.eps'))
+%     print(hfig14,'-depsc2',strcat('Figures/',run_experiment,'/F_SEP_curvature.eps'))
+%     print(hfig15,'-depsc2',strcat('Figures/','ExVivo','/F2_g_LV_EDPVR.eps'))
+%     print(hfig16,'-depsc2',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.eps'))
     print(hfig17,'-depsc2',strcat('Figures/',run_experiment,'/Figure_3.eps'))
-    set(hfig18,'renderer','painters')
-    print(hfig18,'-depsc2',strcat('Figures/',run_experiment,'/Figure_4.eps'))
-
 end

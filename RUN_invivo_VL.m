@@ -20,9 +20,9 @@ n_cores = 4;
 
 % run_experiment = 'Healthy';
 % run_experiment = 'LVSD'; 
-%  run_experiment = 'LVDD'; 
-%    run_experiment = 'RVSD'; 
-  %  run_experiment = 'RVDD'; 
+% run_experiment = 'LVDD'; 
+% run_experiment = 'RVSD'; 
+% run_experiment = 'RVDD'; 
 run_experiments = {'Healthy', 'LVSD', 'LVDD', 'RVSD', 'RVDD'}; 
 % run_experiments = {'Healthy'}; 
 
@@ -132,23 +132,6 @@ switch run_experiment
         [pars_s,~,~,data_s] = parameters(data_s); 
         loading_s = volumeloading(pars_s,data_s,eta_Vtot_vec);
         TriSegAnimExport(loading_s, 'RVDD');
-
-%     case 'LVSD_2'
-%         % Moderate
-%         eta_k_act_LV = 0.75;
-%         data_m.eta_k_act_LV = eta_k_act_LV;
-%         eta_k_act_RV = .75;
-%         data_m.eta_k_act_RV = eta_k_act_RV;
-%         [pars_m,~,~,data_m] = parameters(data_m); 
-%         loading_m = volumeloading(pars_m,data_m,eta_Vtot_vec);
-%         
-%         % Severe 
-%         eta_k_act_LV = 0.5;
-%         data_s.eta_k_act_LV = eta_k_act_LV;
-%         eta_k_act_RV = 0.5;
-%         data_s.eta_k_act_RV = eta_k_act_RV;
-%         [pars_s,~,~,data_s] = parameters(data_s); 
-%         loading_s = volumeloading(pars_s,data_s,eta_Vtot_vec);
 
 end
 

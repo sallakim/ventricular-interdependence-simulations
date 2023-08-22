@@ -16,7 +16,7 @@ titles = {'Healthy normal', ...
           'Right ventricular Diastolic dysfunction'};
 
 for caseIter = 1:length(files)
-    xy = load(['..\' files{caseIter}]).xy;
+    xy = load(['../' files{caseIter}]).xy;
     
     set(gcf, 'Position', defpos);
     % xy = [t, xm_lv, xm_sep,  xm_rv, ym, t_lv, t_sep,  t_rv]; % data structure
