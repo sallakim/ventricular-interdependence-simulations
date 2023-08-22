@@ -2,7 +2,7 @@
 clear;
 figure(102);clf; hold on;
 
-defpos = [200          69        1199         922];
+defpos = [200          69        900         1022];
 
 files = {'TriSegAnim_normal.mat', ...
          'TriSegAnim_LVSD.mat', ...
@@ -93,26 +93,29 @@ for caseIter = 1:length(files)
     for i = 1:length(slides)
         subplot(length(files), length(slides), i + length(slides)*(caseIter-1));hold on;
         set(gca, "FontSize", 14);
-axis([-5 5 -5.5 5.5])
-axis equal;
+        
+        % depends on the total width too!
+        axis([-5.9 7 -5 5])
+        % axis tight
+        axis equal;
+        set(gca, "YTick", [-5, 0, 5]);
+        set(gca, "XTick", [-5, 0, 5]);
+        set(gca, 'TickLength', [0.040 0.040])
 
         if i == 1
             % only first have ticks and label
             ylabel("cm");
-            set(gca, "YTick", [-5, 0, 5]);
-            set(gca, "YTicklabel", [-5, 0, 5], 'TickLength', [0.0250 0.0250]);
+            
+            set(gca, "YTicklabel", [-5, 0, 5]);
         else
-            % no ticks for insides
-            set(gca, "YTick", []);
+            % no tick labels for insides
             set(gca, "YTicklabel", []);
         end
         if length(files) == caseIter
-            xlabel({"cm", slides_titles{i}});
-            set(gca, "XTick", [-5, 0, 5]);
-            set(gca, "XTicklabel", [-5, 0, 5], 'TickLength', [0.0250 0.0250]);
+            xlabel({"cm", slides_titles{i}});            
+            set(gca, "XTicklabel", [-5, 0, 5]);
         else
-% no ticks for insides
-            set(gca, "XTick", []);
+            % no ticks for insides
             set(gca, "XTicklabel", []);
         end
         if i == 1% round(length(slides)/2)
@@ -158,8 +161,5 @@ axis equal;
         arc_rv = linspace(a_start_rv(i), a_stop_rv(i), 20);
         xy_rv = plotArc(x0_rv(i), R_rv(i) + h_rv(i), arc_rv);
         plot(xy_rv(1, :), xy_rv(2, :), 'LineWidth',2, 'Color', c)
-    
-        % xlim([-5 5]);ylim([-5 5]);axis equal;
-        % axis equal;
     end
 end 
