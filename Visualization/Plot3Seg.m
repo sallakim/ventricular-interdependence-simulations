@@ -99,8 +99,8 @@ axis equal;
         if i == 1
             % only first have ticks and label
             ylabel("cm");
-            set(gca, "YTick", [-4, 0, 4]);
-            set(gca, "YTicklabel", [-4, 0, 4]);
+            set(gca, "YTick", [-5, 0, 5]);
+            set(gca, "YTicklabel", [-5, 0, 5], 'TickLength', [0.0250 0.0250]);
         else
             % no ticks for insides
             set(gca, "YTick", []);
@@ -108,8 +108,8 @@ axis equal;
         end
         if length(files) == caseIter
             xlabel({"cm", slides_titles{i}});
-            set(gca, "XTick", [-4, 0, 4], 'XMinorTick', 'off');
-            set(gca, "XTicklabel", [-4, 0, 4], 'TickLength', [0.0250 0.0250]);
+            set(gca, "XTick", [-5, 0, 5]);
+            set(gca, "XTicklabel", [-5, 0, 5], 'TickLength', [0.0250 0.0250]);
         else
 % no ticks for insides
             set(gca, "XTick", []);
