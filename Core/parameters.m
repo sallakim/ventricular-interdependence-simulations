@@ -39,10 +39,12 @@ eta_k_pas_RV = data.eta_k_pas_RV;
 eta_k_act_LV = data.eta_k_act_LV; 
 eta_k_act_RV = data.eta_k_act_RV; 
 
+eta_s = data.eta_s;
+
 %% Pericardium 
 
 Vh0 = 1.25*(EDV_LV + EDV_RV); 
-s = 10; 
+s = eta_s*10; 
 
 %% Blood volume distribution 
 

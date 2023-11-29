@@ -50,7 +50,7 @@ ODE_TOL = 1e-8;
 data.gpars.ODE_TOL = ODE_TOL; 
 eta_Vtot_vec = [1:0.1:3.5];
 %% Volume loading for disease case 
-if ~strcmp('Healthy',run_experiment)
+if ~strcmp('Healthy','Healthy_P1',run_experiment)
     % Redistribute blood volume for disease case 
     bvd_SA = .6; 
     bvd_PA = .35;
@@ -71,6 +71,17 @@ switch run_experiment
         %% Volume loading for healthy case
         % eta_Vtot_vec = 1; 
 
+        [pars_h,~,~,data_h] = parameters(data);
+        loading_h = volumeloading(pars_h,data_h,eta_Vtot_vec);
+
+        TriSegAnimExport(loading_h, 'normal');
+
+    case 'Healthy_P1'
+        %% Volume loading for healthy case
+        % eta_Vtot_vec = 1; 
+
+        eta_s = 2;
+        data.eta_s = eta_s; 
         [pars_h,~,~,data_h] = parameters(data);
         loading_h = volumeloading(pars_h,data_h,eta_Vtot_vec);
 

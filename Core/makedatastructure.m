@@ -77,10 +77,14 @@ eta_k_pas_RV = 1;
 eta_k_act_LV = 1;  % 1.5 for PSD
 eta_k_act_RV = 1; 
 
+eta_s = 1; 
+
 data.eta_Vtot = eta_Vtot;
 data.eta_k_pas_LV = eta_k_pas_LV; 
 data.eta_k_pas_RV = eta_k_pas_RV; 
 data.eta_k_act_LV = eta_k_act_LV; 
 data.eta_k_act_RV = eta_k_act_RV; 
+
+data.eta_s = eta_s; 
 
 end
