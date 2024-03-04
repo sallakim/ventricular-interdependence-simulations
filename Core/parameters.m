@@ -42,7 +42,7 @@ eta_k_act_RV = data.eta_k_act_RV;
 %% Pericardium 
 
 Vh0 = 1.25*(EDV_LV + EDV_RV); 
-s = 10; 
+s = 10; % increase / decrease to change pericardial pressures 
 
 %% Blood volume distribution 
 
@@ -102,8 +102,8 @@ q_PA_M = P_PA_M/P_SA_M;    q_PA_m = P_PA_m/P_SA_m;
 q_PV_M = P_PV_M/P_SA_M;    q_PV_m = P_PV_m/P_SA_m; 
 
 % Recapitulate nominal pressures for each chamber given SA pressure data    
-P_LV_M = q_LV_M*SPbar;          P_LV_m = q_LV_m*DPbar;       
-P_RV_M = q_RV_M*SPbar;          P_RV_m = q_RV_m*DPbar;       
+P_LV_M = q_LV_M*SPbar;    P_LV_m = q_LV_m*DPbar;       
+P_RV_M = q_RV_M*SPbar;    P_RV_m = q_RV_m*DPbar;       
 P_SA_M = q_SA_M*SPbar;    P_SA_m = q_SA_m*DPbar;       
 P_SV_M = q_SV_M*SPbar;    P_SV_m = q_SV_m*DPbar;
 P_PA_M = q_PA_M*SPbar;    P_PA_m = q_PA_m*DPbar;       
@@ -159,10 +159,10 @@ end
 % Unit conversion factor 
 nu_SL = 1e6; 
 
-%% Calculate patient-specific reference midwall surface area (Amref) for LV, SEP, and RV
+%% Calculate subject-specific reference midwall surface area (Amref) for LV, SEP, and RV
 
 % Ventricular inner chamber radius 
-r_LV_and_SEP = (EDV_LV * 3 / (4* pi))^(1/3); 
+r_LV_and_SEP = (EDV_LV * 3 / (4* pi))^(1/3); % use eqn of sphere to get radius
 r_RV         = (EDV_RV * 3 / (4* pi))^(1/3); 
 
 % Ventricle midwall radius (chamber radius (r) + 1/2 wall thickness (h)) where h is
@@ -177,14 +177,14 @@ r_o_LV_and_SEP = r_LV_and_SEP + h_LV_and_SEP; % m
 r_o_RV         = r_RV + h_RV; %m 
 
 % Midwall reference surface area 
-Amref_LV_and_SEP = 4 * pi * (r_m_LV_and_SEP)^2; 
+Amref_LV_and_SEP = 4 * pi * (r_m_LV_and_SEP)^2; % assume sphere 
 Am_RV            = 4 * pi * (r_m_RV)^2;
 
 Amref_LV  = Amref_LV_and_SEP * 2/3; % Assume LV is 2/3 of LV+SEP 
 Amref_SEP = Amref_LV_and_SEP * 1/3; % Assume SEP is 1/3 of LV+SEP
 Amref_RV  = Am_RV;
 
-%% Calculate patient-specific midwall volume (Vw) for LV, SEP, and RV 
+%% Calculate patient-specific wall volume (Vw) for LV, SEP, and RV 
 
 % Outer Ventricle volume 
 Vw_chamber_LV_and_SEP = 4/3 * pi * r_o_LV_and_SEP^3;  
