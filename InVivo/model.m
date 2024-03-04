@@ -184,7 +184,7 @@ P_RV      = ptrans_RV;
 
 % Calculate Pericardial Pressure 
 Vh = V_LV + V_RV; 
-P_peri = 0; %exp(s*(Vh/Vh0 - 1))/7.5; % convert mmHg to kPa 
+P_peri = exp(s*(Vh/Vh0 - 1))/7.5; % convert mmHg to kPa 
 P_LV = P_peri + P_LV; 
 P_RV = P_peri + P_RV; 
 
