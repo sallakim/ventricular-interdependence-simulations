@@ -7,7 +7,7 @@ HR = data.HR;
 k_TS = data.fixpars(15);
 k_TR = data.fixpars(16); 
 
-%% 
+%% Compute Activation Function
 
 % Heart period (s) 
 T = 60/HR; 
