@@ -50,13 +50,9 @@ bvd_SA = data.bvd_SA;   bvd_PA = data.bvd_PA;
 bvd_SV = data.bvd_SV;   bvd_PV = data.bvd_PV; 
 
 % sum total = 1.0, total fraction of blood in each compartment 
-% d_LV = .03;             d_RV = .03;
-% d_SA = .2;              d_PA = .07; 
-% d_SV = .45;             d_PV = .20;
-
-d_LV = .025;           d_RV = .025;
+d_LV = .03;            d_RV = .03;
 d_SA = .2;             d_PA = .05; 
-d_SV = .45;             d_PV = .25;
+d_SV = .54;            d_PV = .15;
 
 d_sum_LV = d_PV + d_LV;
 d_sum_RV = d_SV + d_RV;
@@ -135,11 +131,6 @@ R_a = 5e-4 / 7.5e-6;
 R_t = (P_SV_bar - P_RV_m) / CO; %8e-3 / 7.5e-6; 
 R_p = 5e-4 / 7.5e-6;
 
-% if eta_k_pas_LV ~= 1 || eta_k_pas_RV ~= 1 || eta_k_act_LV ~= 1 || eta_k_act_RV ~= 1 
-%     R_m = R_m/2;
-%     R_t = R_t/2; 
-% end 
-
 %% Heart model parameters 
 
 % Sarcomere length parameters (convert from µm to m)
@@ -151,7 +142,7 @@ Lse_iso = 0.04 * 1e-6;
 v_max   = .5*7 * 1e-6;    
 
 % Passive stress steepness parameter  
-gamma = 7.5; %7.38; 
+gamma = 7.5; 
 if isfield(data,'opt_gamma')
     gamma = data.opt_gamma; 
 end 
@@ -339,8 +330,8 @@ k_act_RV = eta_k_act_RV*ESP_RV / (Gamma_RV_s * sigma_act_RV_s);
 %% Time-varying elastance model parameters 
 
 % Percentage of cardiac cycle 
-k_TS = 0.3; % Beginning of cardiac cycle to maximal systole  
-k_TR = 0.3; 
+k_TS = 0.2; % Beginning of cardiac cycle to maximal systole  
+k_TR = 0.2; 
 
 %% Outputs
 
