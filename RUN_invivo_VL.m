@@ -58,7 +58,7 @@ if ~strcmp('Healthy',run_experiment)
     bvd_PV = .75;
 
     data.bvd_SA = bvd_SA; 
-    data.bvd_PV = bvd_PA; 
+    data.bvd_PA                                                                     = bvd_PA; 
     data.bvd_SV = bvd_SV; 
     data.bvd_PV = bvd_PV; 
 
