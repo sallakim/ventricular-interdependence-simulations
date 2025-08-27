@@ -191,7 +191,7 @@ plot(time,Q_a_valve,'r--','linewidth',2)
 plot(time,Q_t_valve,'b','linewidth',2)
 plot(time,Q_p_valve,'b--','linewidth',2)
 
-ylabel('Flow (mL s^{-1})')
+ylabel('Flow (L min^{-1})')
 xlabel('Time (s)')
 legend('Q_{m}','Q_{a}','Q_{t}','Q_{p}')
 
@@ -537,3 +537,4 @@ if printoutfigs_on == 1
 %     print(hfig16,'-depsc2',strcat('Figures/','ExVivo','/F2_h_RV_EDPVR.eps'))
     print(hfig17,'-depsc2',strcat('Figures/',run_experiment,'/Figure_3.eps'))
 end
+
