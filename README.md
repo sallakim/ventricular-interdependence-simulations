@@ -11,3 +11,5 @@ The repository contains 5 primary folders ('Core', 'ExVivo', 'InVivo', 'LSA_code
 'RUN_invivo_VL' runs the in vivo model with volume loading for the healthy and dysfunction cases. 
 
 'VisualizeEDPVR_labeled' is a simulation video that depicts the TriSeg heart under the four dysfunction simulations for the severe case, and the healthy TriSeg heart. 
+
+Companion code to: https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2023.1231688/full
